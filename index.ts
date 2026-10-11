@@ -32,7 +32,7 @@ const generateHandler = createToolHandler({
     model: z.string().trim().min(1).max(256).default('happyhorse-1.1-t2v').meta({ title: 'Model' } satisfies InputSchemaMetaType),
     resolution: z.string().trim().min(1).max(256).default('720P').meta({ title: 'Resolution' } satisfies InputSchemaMetaType),
     ratio: z.string().trim().min(1).max(256).default('16:9').meta({ title: 'Ratio' } satisfies InputSchemaMetaType),
-    duration: z.number().int().min(1).max(60).default(3).meta({ title: 'Duration' } satisfies InputSchemaMetaType),
+    duration: z.number().int().min(3).max(15).default(3).meta({ title: 'Duration' } satisfies InputSchemaMetaType),
     watermark: z.boolean().default(false).meta({ title: 'Watermark' } satisfies InputSchemaMetaType),
   }),
   outputSchema,
@@ -56,13 +56,13 @@ const retrieveHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataHappyHorse',
-    version: '0.1.0',
+    version: '0.2.0',
     name: { en: 'Ace Data Cloud Happy Horse', 'zh-CN': 'Ace Data Cloud Happy Horse 视频' },
     description: {
       en: 'Generate video with Happy Horse through Ace Data Cloud and retrieve the same task.',
       'zh-CN': '通过 Ace Data Cloud Happy Horse 视频生成并查询同一任务。'
     },
-    versionDescription: { en: 'Initial release', 'zh-CN': '首次发布' },
+    versionDescription: { en: 'Align API limits and task status handling', 'zh-CN': '对齐 API 限制和任务状态处理' },
     author: 'Ace Data Cloud',
     repoUrl: 'https://github.com/AceDataCloud/HappyHorseFastGPT',
     tutorialUrl: 'https://github.com/AceDataCloud/HappyHorseFastGPT#quick-start',

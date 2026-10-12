@@ -84,7 +84,7 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataHappyHorse',
-    version: '0.2.0',
+    version: '0.2.1',
     name: { en: 'Ace Data Cloud Happy Horse', 'zh-CN': 'Ace Data Cloud Happy Horse 视频' },
     description: {
       en: 'Generate video with Happy Horse through Ace Data Cloud and retrieve the same task.',

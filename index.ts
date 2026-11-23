@@ -6,6 +6,8 @@ import {
   type SecretSchemaMetaType
 } from '@fastgpt-plugin/sdk-factory';
 import z from 'zod';
+import { referenceInputs } from './src/references.ts';
+import { MODEL_HELP } from './src/model-catalog.ts';
 
 import { submitGeneration, retrieveTask, retrieveTasks } from './src/client.ts';
 import type { TaskResult } from './src/client.ts';
@@ -29,8 +31,9 @@ const outputSchema = z.object({
 
 const generateHandler = createToolHandler({
   inputSchema: z.object({
+    ...referenceInputs,
     prompt: z.string().trim().min(1).max(10000).meta({ title: 'Prompt', isToolParam: true } satisfies InputSchemaMetaType),
-    model: z.string().trim().min(1).max(256).default('happyhorse-1.1-t2v').meta({ title: 'Model' } satisfies InputSchemaMetaType),
+    model: z.string().trim().min(1).max(256).default('happyhorse-1.1-t2v').meta({ title: 'Model', description: MODEL_HELP } satisfies InputSchemaMetaType),
     resolution: z.string().trim().min(1).max(256).default('720P').meta({ title: 'Resolution' } satisfies InputSchemaMetaType),
     ratio: z.string().trim().min(1).max(256).default('16:9').meta({ title: 'Ratio' } satisfies InputSchemaMetaType),
     duration: z.number().int().min(3).max(15).default(3).meta({ title: 'Duration' } satisfies InputSchemaMetaType),
@@ -84,7 +87,7 @@ const batchHandler = createToolHandler({
 export default defineToolSet({
   manifest: {
     pluginId: 'acedataHappyHorse',
-    version: '0.2.2',
+    version: '0.2.3',
     name: { en: 'HappyHorse by Ace Data Cloud', 'zh-CN': 'HappyHorse 视频 · Ace Data Cloud' },
     description: {
       en: 'Generate HappyHorse (Happy Horse) videos through Ace Data Cloud and retrieve the same task.',

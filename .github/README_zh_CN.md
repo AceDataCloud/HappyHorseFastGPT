@@ -8,6 +8,13 @@
 
 本插件把生成操作与单项／批量任务查询分开。生成只提交一次；之后只查询原 taskId。返回 pending 或工作流显示成功，都不代表媒体文件已完成。
 
+## 模型与参考输入
+
+模式与模型需对应：generate（t2v）、image_to_video（i2v，需首帧图）、reference_to_video（r2v，需 1–9 张参考图）、video_edit（需已有视频，可加 0–5 张参考图）。视频编辑是独立计费提交，费用按输入与输出视频时长合计。
+
+模型字段的说明列出当前公开模型，同时保留精确模型 ID 自由输入。目录由公开 API 合同生成，每日任务仅提出源码草稿更新，不自动发布包或运行生成；审核与发布单独进行。已有工具 ID、文生默认值和任务查询行为保持兼容。本次更新没有执行付费模型调用。
+
+
 ## 从零开始
 
 [FastGPT 官方插件市场](https://cloud.fastgpt.io/config/tool/marketplace) · [本插件官方收录审核](https://github.com/labring/fastgpt-community-plugins/pull/78)。当前候选尚未上架，审核链接不是安装按钮。

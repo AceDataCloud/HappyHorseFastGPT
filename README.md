@@ -4,6 +4,13 @@ This independent plugin is maintained by **Ace Data Cloud** and uses your Ace ap
 
 Generate HappyHorse video and retrieve the result in a FastGPT workflow. [简体中文](README_zh_CN.md) · [Current pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=happyhorsefastgpt_readme_pricing)
 
+## Model and reference inputs
+
+Choose Mode and its matching model: generate (t2v), image_to_video (i2v; first frame), reference_to_video (r2v; 1–9 reference images), or video_edit (existing video and optional 0–5 reference images). Video editing is a separate billable submission and its cost includes input and output video duration.
+
+The Model field lists the current published models in its help text and still accepts exact model IDs as free text. Its catalog is generated from the public API contract. A daily workflow proposes a draft source update; it never publishes a package or runs generation. Review and release are separate. Existing tool IDs, text-generation defaults and task lookup behavior are preserved. No paid model execution was performed for this update.
+
+
 ## Quick start
 
 ### 1. Install

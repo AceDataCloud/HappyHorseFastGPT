@@ -1,3 +1,5 @@
+import { referencePayload, type ReferenceInput } from './references.ts';
+
 export type TaskResult = {
   taskId: string;
   traceId: string;
@@ -14,7 +16,7 @@ export type GenerateInput = {
   ratio: string;
   duration: number;
   watermark: boolean;
-};
+} & ReferenceInput;
 
 const GENERATE_PATH = '/happyhorse/videos';
 const TASK_PATH = '/happyhorse/tasks';
@@ -111,7 +113,7 @@ export async function submitGeneration(input: GenerateInput, apiKey: string): Pr
     ratio: input.ratio,
     duration: input.duration,
     watermark: input.watermark,
-    action: 'generate',
+    ...referencePayload(input),
     async: true,
   };
   const body = await post(GENERATE_PATH, apiKey, payload);
